@@ -126,7 +126,6 @@ public class Supermercado extends javax.swing.JFrame {
         bXnombre.setVisible(rootPaneCheckingEnabled);
         jDesktopPane1_escr.add (bXnombre);
         jDesktopPane1_escr.moveToFront(bXnombre);
-        
     }//GEN-LAST:event_jMenuItem_NombreActionPerformed
 
     private void jMenuItem_precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_precioActionPerformed
@@ -143,7 +142,7 @@ public class Supermercado extends javax.swing.JFrame {
         // TODO add your handling code here:
          jDesktopPane1_escr.removeAll();
          jDesktopPane1_escr.repaint();
-         BusquedaRubro busquedaRubro = new BusquedaRubro();
+         BusquedaPorRubroView_1 busquedaRubro = new BusquedaPorRubroView_1();
          busquedaRubro.setVisible(rootPaneCheckingEnabled);
          jDesktopPane1_escr.add(busquedaRubro);
          jDesktopPane1_escr.moveToFront(busquedaRubro);
@@ -215,6 +214,7 @@ public class Supermercado extends javax.swing.JFrame {
         listaDeProductos.add(new Producto ("Aceite Natural  ", 54, 597.5, 87, EnumCategoria.COMESTIBLE));
         listaDeProductos.add(new Producto ("Lustramueble Suavecito", 58, 196.6, 70, EnumCategoria.LIMPIEZA));
         listaDeProductos.add(new Producto ("Desodorante Odol", 87, 100.8, 7, EnumCategoria.PERFUMERIA));
+        listaDeProductos.add(new Producto ("Desodorante para piso", 15, 180.8, 8, EnumCategoria.LIMPIEZA));
     }
     
 
