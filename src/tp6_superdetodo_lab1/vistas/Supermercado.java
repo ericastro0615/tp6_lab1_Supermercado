@@ -152,7 +152,7 @@ public class Supermercado extends javax.swing.JFrame {
         // TODO add your handling code here:
          jDesktopPane1_escr.removeAll();
          jDesktopPane1_escr.repaint();
-         gestionProductos gestionProductos = new gestionProductos();
+         gestionProductosGral gestionProductos = new gestionProductosGral();
          gestionProductos.setVisible(rootPaneCheckingEnabled);
          jDesktopPane1_escr.add(gestionProductos);
          jDesktopPane1_escr.moveToFront(gestionProductos);
