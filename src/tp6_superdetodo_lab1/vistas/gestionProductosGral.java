@@ -5,7 +5,9 @@
 package tp6_superdetodo_lab1.vistas;
 
 import javax.swing.JOptionPane;
+import tp6_superdetodo_lab1.entidades.EnumCategoria;
 import tp6_superdetodo_lab1.entidades.Producto;
+import static tp6_superdetodo_lab1.vistas.Supermercado.listaDeProductos;
 
 
 /**
@@ -46,13 +48,14 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
         jTextField1_cod = new javax.swing.JTextField();
         jTextField1_precio = new javax.swing.JTextField();
         jTextField1_stock = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_tablaGralGestionProd = new javax.swing.JTable();
 
         setClosable(true);
 
-        jComboBox_Rubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Elija una opcion", "COMESTIBLE", "LIMPIEZA", "PERFUMERIA" }));
+        jComboBox_Rubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Elija una opcion", "ALIMENTOS", "LIMPIEZA", "PERFUMERIA" }));
 
-        btnNuevo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        btnNuevo.setForeground(new java.awt.Color(0, 0, 255));
+        btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,8 +63,6 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
             }
         });
 
-        btnGuardar.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,8 +70,6 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(0, 0, 255));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +77,7 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
             }
         });
 
-        btnSalir.setForeground(new java.awt.Color(0, 0, 255));
+        btnSalir.setForeground(new java.awt.Color(255, 0, 51));
         btnSalir.setText("SALIR");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,16 +114,37 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
 
         jTextField1_stock.setText(" ");
 
+        jTable_tablaGralGestionProd.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable_tablaGralGestionProd);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSalir))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jLabel1_gestionProd, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
+                                .addGap(17, 17, 17)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2_cod)
                                     .addComponent(jLabel2_precio)
@@ -133,43 +153,43 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel2_nombre))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1_cod)
-                                    .addComponent(jTextField1_precio)
-                                    .addComponent(jTextField1_stock)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBox_Rubro, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jTextField1_cod)
+                                            .addComponent(jTextField1_precio)
+                                            .addComponent(jTextField1_stock)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextField1_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(1, 1, 1)
+                                        .addComponent(btBuscar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jComboBox_Rubro, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1_gestionProd, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(1, 1, 1)
-                        .addComponent(btBuscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 80, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSalir)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
+                                .addGap(57, 57, 57)
                                 .addComponent(btnGuardar)
-                                .addGap(36, 36, 36)
-                                .addComponent(btnEliminar)))))
-                .addGap(23, 23, 23))
+                                .addGap(54, 54, 54)
+                                .addComponent(btnEliminar)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(16, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1_gestionProd)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel1_gestionProd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addGap(8, 8, 8)
                         .addComponent(jLabel2_nombre)
                         .addGap(49, 49, 49))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1_prod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,24 +202,22 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2_precio)
                     .addComponent(jTextField1_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2_cat)
                     .addComponent(jComboBox_Rubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2_stock)
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField1_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2_stock))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
                     .addComponent(btnGuardar)
                     .addComponent(btnNuevo))
-                .addGap(10, 10, 10)
-                .addComponent(btnSalir)
-                .addGap(20, 20, 20))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(btnSalir))
         );
 
         pack();
@@ -208,108 +226,99 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         try {
             int cont = 0;
-            int codigo = Integer.parseInt(jt_Codigo.getText().trim());
-            //Traigo el codigo capturado en el boton buscar, para que antes de presionar 
-            //Guardar, no cambien el codigo y modifiquen otro producto...
-            Supermercado.codigoBuscado = codigo;
-            for (Producto prod : Menu.listaProductos) {
-                if (prod.getCodigo() == codigo) {
-                    jtDescripcion.setText(prod.getDescripcion());
-                    //paso precio a string para setearlo en el jtPrecio:
-                    String precioString = Double.toString(prod.getPrecio());
-                    jtPrecio.setText(precioString);
-                    String rubroString = prod.getRubro().toString();
+            int codigo = Integer.parseInt(jTextField1_cod.getText().trim());
+            //falta filtrar cpd ya ingresados
+            for (Producto aux : Supermercado.listaDeProductos) {
+                if (aux.getCodigo() == codigo) {
+                    jTextField1_prod.setText(aux.getDescripcion());
+                    String precioString = Double.toString(aux.getPrecio());
+                    jTextField1_precio.setText(precioString);
+                    String rubroString = aux.getCategoria().toString();
                     jComboBox_Rubro.setSelectedItem(rubroString);
-                    //paso el stock de int a string para setText
-                    String stockString = Integer.toString(prod.getStock());
-                    jtStock.setText(stockString);
+                    String stockString = Integer.toString(aux.getStock());
+                    jTextField1_stock.setText(stockString);
                     cont = cont - 1;
                 }
                 cont = cont + 1;
-                if (Menu.listaProductos.size() == cont) {
-                    borrarCampos();
-                    JOptionPane.showMessageDialog(this, "El codigo: " + codigo + " NO existe, puede registrar un producto con el codigo ingresado ");
+                if (Supermercado.listaDeProductos.size() == cont) {
+                    borrarLista();
+                    JOptionPane.showMessageDialog(this, "El codigo ingresado, no se encuentra");
                 }
             }
 
-        } catch (NumberFormatException nfe) {
-            borrarCampos();
-            JOptionPane.showMessageDialog(this, "Ingrese un numero en el código, para realizar la busqueda del producto");
+        } catch (NumberFormatException e) { 
+            JOptionPane.showMessageDialog(this, "Ingrese un número válido");
+            borrarLista();
         }
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         try {
-            int codigo = Integer.parseInt(jt_Codigo.getText().trim());
+            int codigo = Integer.parseInt(jTextField1_precio.getText().trim());
             // el producto se va agregar solo si el codigo no existe y todos los datos estan completos. 
             boolean existe = false;
-            for (Producto prod : Menu.listaProductos) {
-                if (prod.getCodigo() == codigo) {
-                    jt_Codigo.setText("");
-                    existe = true;
-                    JOptionPane.showMessageDialog(this, "Producto Existente: el código ya esta registrado\n"
-                            + "Puede ingresar el código y modificar los datos del producto");
+            for (Producto aux : Supermercado.listaDeProductos) {
+                if (aux.getCodigo() == codigo) {
+                    jTextField1_cod.setText("");
+                    JOptionPane.showMessageDialog(this, "Error, el código ya esta registrado" );
                 }
             }
             //capturo los campos de texto en variables con el tipo de dato parseado:
-            String descripcion = jtDescripcion.getText().trim();
-            Double precio = Double.parseDouble(jtPrecio.getText().trim());
-            int stock = Integer.parseInt(jtStock.getText().trim());
+            String nombre = jTextField1_prod.getText().trim();
+            Double precio = Double.parseDouble(jTextField1_precio.getText().trim());
+            int stock = Integer.parseInt(jTextField1_stock.getText().trim());
             String categoria = jComboBox_Rubro.getSelectedItem().toString();
 
             if (categoria.equals("- Elija una opcion")) {
-                JOptionPane.showMessageDialog(this, "Seleccione un Rubro por favor...");
+                JOptionPane.showMessageDialog(this, "Categorias de productos:");
             }
             if (existe == false) {
-                listaProductos.add(new Producto(codigo, descripcion, precio, stock, Categoria.valueOf(categoria)));
-                JOptionPane.showMessageDialog(this, "¡ Producto Agregado !");
+                listaDeProductos.add(new Producto(nombre, codigo, precio, stock,  EnumCategoria.valueOf(categoria)));
+                JOptionPane.showMessageDialog(this, "Producto agregado correctamente");
             }
-
-        } catch (NumberFormatException nfe) {
-            //si hay datos vacios o datos incorrectos , mostrara un cartel.
-            jt_Codigo.setText("");
-            JOptionPane.showMessageDialog(this, "Datos incorrectos o vacios, verifique los datos ingresados");
+        } catch (NumberFormatException e) {
+            jTextField1_cod.setText("");
+            JOptionPane.showMessageDialog(this, "Datos incorrectos, ingrese un número válido");
 
         }
-        borrarCampos();
+        borrarLista();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try {
-            boolean datosOk = true;
-            int codigo = Integer.parseInt(jt_Codigo.getText().trim());
-            if (codigo!= Menu.codigoBuscado){
-                datosOk=false;
+         
+            int codigo = Integer.parseInt(jTextField1_cod.getText().trim());
+           
+            
+            if (jTextField1_prod.getText().trim().equals("") || jTextField1_precio.getText().trim().equals("") || jTextField1_stock.getText().trim().equals("") || jTextField1_cod.getText().trim().equals("")) {
+                
+                JOptionPane.showMessageDialog(this, "Campos vacios. Reintente nuevamente");
             }
-            if (jtDescripcion.getText().trim().equals("") || jtPrecio.getText().trim().equals("") || jtStock.getText().trim().equals("") || jtStock.getText().trim().equals("")) {
-                datosOk = false;
-                JOptionPane.showMessageDialog(this, "Datos vacios, ingrese todos los datos...");
-            }
-            // el producto se va a modificar solo si el codigo existe y todos los datos estan completos. 
-            for (Producto prod : Menu.listaProductos) {
-                if (prod.getCodigo() == codigo && datosOk == true) {
+           
+            for (Producto aux : Supermercado.listaDeProductos ) {
+                if (aux.getCodigo() == codigo ) {
                     //capturo los campos de texto en variables con el tipo de dato parseado:
-                    String descripcion = jtDescripcion.getText().trim();
-                    Double precio = Double.parseDouble(jtPrecio.getText().trim());
-                    int stock = Integer.parseInt(jtStock.getText().trim());
+                    String descripcion = jTextField1_prod.getText().trim();
+                    Double precio = Double.parseDouble(jTextField1_precio.getText().trim());
+                    int stock = Integer.parseInt(jTextField1_stock.getText().trim());
                     String categoria = jComboBox_Rubro.getSelectedItem().toString();
 
                     if (categoria.equals("- Elija una opcion")) {
                         JOptionPane.showMessageDialog(this, "Seleccione un Rubro por favor...");
                     } else {
-                        prod.setDescripcion(descripcion);
-                        prod.setPrecio(precio);
-                        prod.setStock(stock);
+                        aux.setDescripcion(descripcion);
+                        aux.setPrecio(precio);
+                        aux.setStock(stock);
                         if (categoria.equalsIgnoreCase("PERFUMERIA")) {
-                            prod.setRubro(Categoria.PERFUMERIA);
+                            aux.setCategoria(EnumCategoria.PERFUMERIA);
                         }
-                        if (categoria.equalsIgnoreCase("COMESTIBLE")) {
-                            prod.setRubro(Categoria.COMESTIBLE);
+                        if (categoria.equalsIgnoreCase("ALIMENTOS")) {
+                            aux.setCategoria(EnumCategoria.COMESTIBLE);
                         }
                         if (categoria.equalsIgnoreCase("LIMPIEZA")) {
-                            prod.setRubro(Categoria.LIMPIEZA);
+                            aux.setCategoria(EnumCategoria.LIMPIEZA);
                         }
-                        JOptionPane.showMessageDialog(this, "Cambios Guardados !");
+                        JOptionPane.showMessageDialog(this, "Datos modificados, exitosamente");
                     }
                 }
             }
@@ -318,7 +327,7 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Elija una categoria del producto a buscar");
             }
         } catch (NumberFormatException e) {
-            jt_Codigo.setText("");
+            jTextField1_stock.setText("");
             JOptionPane.showMessageDialog(this, "Datos incorrectos. Ingrese un número");
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(this, "Error, debe completar los campos");
@@ -338,7 +347,7 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
                 }
             }
             if (eliminar == true) {
-                Menu.listaProductos.removeIf(prod -> prod.getCodigo() == codigo);
+                Supermercado.listaDeProductos.removeIf(prod -> prod.getCodigo() == codigo);
                 JOptionPane.showMessageDialog(this, "Producto eliminado");
             } else {
                 JOptionPane.showMessageDialog(this, "Producto no encontrado");
@@ -370,16 +379,18 @@ public class gestionProductosGral extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2_nombre;
     private javax.swing.JLabel jLabel2_precio;
     private javax.swing.JLabel jLabel2_stock;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable_tablaGralGestionProd;
     private javax.swing.JTextField jTextField1_cod;
     private javax.swing.JTextField jTextField1_precio;
     private javax.swing.JTextField jTextField1_prod;
     private javax.swing.JTextField jTextField1_stock;
     // End of variables declaration//GEN-END:variables
     private void borrarLista() {
-        jt_Codigo.setText("");
-        jtDescripcion.setText("");
-        jtPrecio.setText("");
-        jtStock.setText("");
+        jTextField1_cod.setText("");
+        jTextField1_precio.setText("");
+        jTextField1_prod.setText("");
+        jTextField1_stock.setText("");
         jComboBox_Rubro.setSelectedIndex(0);
     }
 }
